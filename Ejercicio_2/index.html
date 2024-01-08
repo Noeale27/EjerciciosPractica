@@ -1,0 +1,32 @@
+<body>
+    <label for="radio">Ingrese el radio: </label>
+    <input type="number" id="radio">
+
+    <button type="button" id="button">Calcular</button>
+    <div id="displayArea"></div>
+    <div id="displayPerimetro"></div>
+
+
+    <script>
+        let button = document.getElementById("button");
+        let displayArea = document.getElementById("displayArea");
+        let displayPerimetro = document.getElementById("displayPerimetro");
+        let radioInput = document.getElementById("radio")
+
+        button.addEventListener("click", function() {
+            let enteredRadio=radioInput.value;
+            if (!isNaN(enteredRadio)) {
+                const area =  Math.PI * Math.pow(enteredRadio, 2);
+                const perimeter = 2 * Math.PI * enteredRadio;
+
+                displayArea.textContent = "Área: " + area.toFixed(2);
+                displayPerimetro.textContent = "Perímetro: " + perimeter.toFixed(2);
+            } else {
+                displayArea.textContent = "Por favor, ingrese un valor numérico válido para el radio.";
+                displayPerimetro.textContent = "";
+            }
+            }
+        )
+        
+    </script>
+</body>
