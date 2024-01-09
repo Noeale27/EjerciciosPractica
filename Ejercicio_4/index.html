@@ -1,0 +1,30 @@
+<body>
+    <label for="pulgadas">Ingrese pulgadas </label>
+    <input type="number" id="pulgadas">
+
+    <button type="button" id="button">Calcular</button>
+    <div id="displayInches"></div>
+
+    <script>
+        let button = document.getElementById("button");
+        let pilgadas=document.getElementById("pulgadas");
+        let displayInches = document.getElementById("displayInches");
+
+        button.addEventListener("click", function() {
+            let enteredPulgadas=parseFloat(pulgadas.value);
+
+            if (!isNaN(enteredPulgadas)) {
+                let Inches = (enteredPulgadas) * 2.54;
+
+                displayInches.textContent = "La conversion es: " + Inches.toFixed(2);
+            } else {
+                displayInches.textContent = "Por favor, ingrese un valor numérico válido.";
+            }
+            })
+        
+
+    </script>    
+
+
+
+</body>
