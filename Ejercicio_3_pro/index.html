@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+   	input{
+   	    margin: 8px;
+   	}
+   </style>
+</head>
+
+<body>
+    <label for="nota1">Ingrese nota 1 </label>
+    <input type="number" id="nota1">
+
+    <br>
+    <br>
+    
+    <div id='input-cont'>
+
+    </div>
+    <button onclick='addInput()'>Agregar Nota</button>
+
+    <button type="button" id="button" onclick='calcularPromedio()'>Calcular Promedio</button>
+    <div id="displayPromedio"></div>
+
+    <br>
+
+    <button type="button" id="button" onclick='resetForm()'>Borrar todo</button>
+    <div id="borrarTodo"></div>
+
+    
+    <script>
+        const container = document.getElementById('input-cont');
+        let counter = 2;
+
+        function addInput(){
+            let input = document.createElement('input');
+            input.type="number"
+            input.placeholder = 'Nota ' + counter;
+            counter++;
+
+            container.appendChild(input);
+        }
+        
+        function calcularPromedio() {
+        // Select all input elements within the container with the id 'input-cont'
+
+            const inputs = document.querySelectorAll('#input-cont input');
+            
+            // Check if there are any input elements
+            if (inputs.length > 0) {
+                // Initialize a variable to store the sum of the input values
+                let sum = 0;
+                // Iterate over each input element using forEach
+                
+                inputs.forEach(input => {
+                // Convert the value of the input to a floating-point number, or default to 0 if NaN
+                    sum += parseFloat(input.value) || 0;
+                });
+                // Calculate the average by dividing the sum by the number of input elements
+                const average = sum / inputs.length;
+                // Display the calculated average in the element with the id 'displayPromedio'
+                document.getElementById('displayPromedio').innerHTML = 'Promedio: ' + average.toFixed(2);
+            } else {
+                // If there are no input elements, display a message
+                document.getElementById('displayPromedio').innerHTML = 'No hay notas para calcular el promedio.';
+            }
+        }
+
+        function resetForm() {
+            // Clear input fields
+            document.getElementById('nota1').value = '';
+            container.innerHTML = ''; // Clear dynamically added input fields
+
+            // Reset counter
+            counter = 2;
+
+            // Clear displayed average
+            document.getElementById('displayPromedio').innerHTML = '';
+        }
+
+        
+    </script>
+</body>
+
+ 

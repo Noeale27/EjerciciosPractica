@@ -1,0 +1,32 @@
+<body>
+    <label for="ingreseNumero">Ingrese un numero</label>
+    <input id="ingreseNumero"></input>
+
+    
+    <button type="button" id="returnButton">Retornar parte decimal</button>
+    <div id="displayDecimals"></div>
+
+    <script>
+        let button = document.getElementById("returnButton");
+        let displayDecimals = document.getElementById("displayDecimals");
+        let ingreseNumero = document.getElementById("ingreseNumero");
+        
+         button.addEventListener("click", function() {
+            let enteredNumber = ingreseNumero.value;
+
+            if (!isNaN(enteredNumber) && !Number.isInteger(enteredNumber)) {
+
+                displayDecimals.textContent = "Los decimales son: " + enteredNumber.split(".")[1];
+
+            } else {
+                displayDecimals.textContent = "Ingrese un número válido.";
+
+            }
+            })
+           
+
+    </script>
+
+</body>
+
+
