@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+   	input{
+   	    margin: 8px;
+   	}
+   </style>
+</head>
+
+
+<body>
+
+    <label for="palabra1">Ingrese palabra 1</label>
+    <input id="palabra1"></input>
+     
+    <br>
+
+    <label for="palabra2">Ingrese palabra 2</label>
+    <input id="palabra2"></input>
+
+    <br>
+
+    <div id="input-cont">
+        
+    </div>
+    
+    <button onclick="addInput()" id="agregarPalabra">Agregue otra palabra</button>
+
+    
+    <button onclick="longestWrod()" id="PalabraLarga">Palabra más larga</button>
+    <div id="displayLongestWord"></div>
+
+    <script>
+        const container = document.getElementById("input-cont");
+        let counter = 3;
+
+        function addInput(){
+            let input = document.createElement("input");
+            input.placeholder = "Palabra" + counter;
+            
+            let label = document.createElement("label");
+            label.textContent = "Palabra" + counter;
+            
+           container.appendChild(label);
+           container.appendChild(input);
+
+            counter++;
+        }
+
+        function longestWrod() {
+            let inputs = document.querySelectorAll('input');
+            let enteredWord = document.querySelectorAll('#input-cont input');
+            let longestWord = " ";
+
+            inputs.forEach(function(input){
+
+                let words = input.value.split(" ");
+
+                words.forEach(function(word){
+                    if (word.length > longestWord.length) {
+                        longestWord = word;
+                    }
+
+
+                })
+            })
+
+            let displayLongestWord = document.getElementById("displayLongestWord");
+            displayLongestWord.textContent = "La palabra más larga es: " + longestWord + " y contiene " + longestWord.length + " caracteres.";
+            
+        }
+
+
+    </script>
+    
+    </body>

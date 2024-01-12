@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+   	input{
+   	    margin: 8px;
+   	}
+   </style>
+</head>
+
+
+<body>
+
+    <label for="enteredNum1">Ingrese numero</label>
+    <input id="enteredNum1"></input>
+     
+    <br>
+
+    <label for="enteredNum2">Ingrese numero</label>
+    <input id="enteredNum2"></input>
+
+    <br>
+
+    <div id="input-cont">
+        
+    </div>
+
+    <br>
+    
+    <button onclick="sortNumbers()" id="ordenarNum">Ordenar Numeros</button>
+    <div id="displaySortedNum"></div>
+
+    <script>
+
+        function sortNumbers() {
+    let enteredNum1 = parseFloat(document.getElementById("enteredNum1").value);
+    let enteredNum2 = parseFloat(document.getElementById("enteredNum2").value);
+    let displaySortedNum = document.getElementById("displaySortedNum");
+
+    if (!isNaN(enteredNum1) && !isNaN(enteredNum2)) {
+        let numbers = [enteredNum1, enteredNum2];
+
+        numbers.sort(function(a, b) {
+            return a - b;
+        });
+
+        // Mostrar los números ordenados en el div
+        displaySortedNum.textContent = "Números Ordenados: " + numbers.join(', ');
+    } else {
+        displaySortedNum.textContent = "Ingresa números válidos en ambos campos.";
+    }
+}
+
+    </script>
+    
+    </body>
